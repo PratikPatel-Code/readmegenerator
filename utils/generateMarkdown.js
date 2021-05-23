@@ -86,58 +86,66 @@ function renderLicenseSection(license) {
 }
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(answers) {
-    const [badge] = renderLicenseBadge(answers.license);
-    const [licenseSection, content] = renderLicenseSection(answers.license);
+function generateMarkdown(data) {
+    const [badge] = renderLicenseBadge(data.license);
+    const [licenseSection, content] = renderLicenseSection(data.license);
     // copied markdown code from my skeleton ReadME then made adjustments
-    return `
-#
-Project Title
-$ { answers.title}
-  
-##
-Table of Contents:
+    return `# ${data.title}
+#  
+## Table of Contents:
+
 *[Description](#Description: )
+
 *[Installation](#Installation: )
+
 *[Usage](#Usage: )
+
 *[License](#License: )
+
 *[Contributing](#Contributing: )
+
 *[Tests](#Tests: )
+
 *[Questions](#Questions: )
   
-### Description:
-$ { answers.description }
-$ {badge}
+#
+## Description:
+${data.description}
+
+${badge}
   
-###
-Installation:
-$ { answers.installation }
+#
+## Installation:
+${data.installation}
   
-###
-Usage:
-$ { answers.usage }
+#
+## Usage:
+${data.usage}
   
-###
-License:
-$ { answers.license }
+#
+## License:
+${data.license}
+
+${badge}
   
-###
-Contributing:
-$ { answers.contributing }
+#
+## Contributing:
+${data.contributing}
   
-###
-Tests:
-$ { answers.tests }
+#
+## Tests:
+${data.tests}
   
-###
-Questions:
+#
+## Questions:
 If you have any questions about the project you can contact me via email or GitHub
   
-Email: $ { answers.email }
+Email: ${data.email}
   
-GitHub Profile: $ { answers.username }
-  
+GitHub Profile: ${data.username}
   `;
 }
 
-module.exports = generateMarkdown;
+module.exports = {
+    generateMarkdown
+};
